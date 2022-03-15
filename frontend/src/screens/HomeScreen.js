@@ -1,14 +1,25 @@
-import React from 'react'
+import React , {useState , useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import data from '../../../backend/data'
+import axios from "axios"
+// import data from '../../../backend/data'
+
 
 
 const HomeScreen = () => {
+    const [product , setProduct] = useState([])
+    
+    useEffect(()=> {
+        const fetchData = async ()=>{
+            const result = await axios.get("/api/products")
+            setProduct(result.data) 
+        }
+        fetchData()
+    },[])
   return (
     <>
         <h1>Featured Products</h1>
         <div className="products">
-        {data.products.map((product) => (
+        {product.map((product) => (
           <div className="product" key={product.slug} >
             <Link to={`/product/${product.slug}`}>
               <img src={product.image} alt={product.name}/>
