@@ -12,15 +12,9 @@ code {
     monospace;
 }
 
-header{
-  background-color: #404040;
-  padding: 1rem;
-}
-
-header a {
-  color : #ffffff;
-  font-weight: bold;
-  text-decoration: none;
+.site-container{
+  min-height: 100vh;
+ 
 }
 
 .products {
@@ -30,7 +24,7 @@ header a {
 }
 
 main{
-  padding: 1rem;
+  flex: 1;
 }
 
 .product{

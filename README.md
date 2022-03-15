@@ -7,3 +7,4 @@
 4. create git repo
 5. create server.js
 6. add start command as node backend/server.js
+7. manage state by useReducer
