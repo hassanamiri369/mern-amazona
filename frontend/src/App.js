@@ -1,4 +1,4 @@
-
+import React , {useContext} from "react"
 import {BrowserRouter , Link, Route , Routes} from 'react-router-dom'
 import HomeScreen from "./screens/HomeScreen"
 import ProductScreen from "./screens/ProductScreen";
@@ -6,8 +6,15 @@ import ProductScreen from "./screens/ProductScreen";
 import Navbar from "react-bootstrap/Navbar"
 import Container from "react-bootstrap/Container"
 import {LinkContainer} from "react-router-bootstrap"
+import { Badge, Nav } from 'react-bootstrap';
+import { Store } from './Store';
 
 function App() {
+  // const {state : {cart}} = useContext(Store)
+  const {state } = useContext(Store)
+  const {cart} = state;
+
+  
   return (
    <>
       <BrowserRouter>
@@ -18,6 +25,12 @@ function App() {
             <LinkContainer to="/">
               <Navbar.Brand>amazona</Navbar.Brand>
             </LinkContainer>
+
+            <Nav to="/cart" className='nav-link'>
+              Cart {cart.cartItems.length > 0 && (
+                <Badge pill bg="danger">{cart.cartItems.length}</Badge>
+              )}
+            </Nav>
           </Container>
         </Navbar>
         
