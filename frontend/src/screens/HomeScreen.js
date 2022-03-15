@@ -6,6 +6,7 @@ import logger from "use-reducer-logger"
 import {Row , Col} from "react-bootstrap"
 import Product from '../Components/Product'
 import { Helmet } from 'react-helmet-async'
+import MessageBox from '../Components/MessageBox'
 
 
 
@@ -54,11 +55,6 @@ const HomeScreen = () => {
             }catch(err){
                 setError(err)
             }
-
-        
-            
-
-
         }
         fetchData()
     },[])
@@ -73,7 +69,7 @@ const HomeScreen = () => {
         {
          loading ? <div>Loading ...</div> 
         :
-        error ? <div>{error}</div>
+        error ? <MessageBox variant="danger">{error}</MessageBox>
         :
         <Row>
             {(products.map((product) => (
